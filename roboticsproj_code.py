@@ -5,7 +5,6 @@ from time import sleep
 import pyttsx3
 engine = pyttsx3.init()
 
-flr=int(input("Pls enter your floor: "))
 
 def say(r):
     rate = engine.getProperty('rate')
@@ -80,24 +79,35 @@ def ymotor(d):
         #GPIO.output(in21,GPIO.LOW)
         #GPIO.output(in22,GPIO.LOW)
         print("y axis stop")
+
 #Assuming we always start from ground (0)
 
-if int(flr)==1:
-    xmotor('+')
-    #click servo
-    xmotor('-')
+def main(flr):
+    if int(flr)==1:
+        xmotor('+')
+        #click servo
+        xmotor('-')
 
-elif int(flr)==2:
-    ymotor('+')
-    #click servo
-    ymotor('-')
+    elif int(flr)==2:
+        ymotor('+')
+        #click servo
+        ymotor('-')
 
-elif int(flr)==3:
-    xmotor('+')
-    ymotor('+')
-    #click servo
-    xmotor('-')
-    ymotor('-')
+    elif int(flr)==3:
+        xmotor('+')
+        ymotor('+')
+        #click servo
+        xmotor('-')
+        ymotor('-')
 
-else:
-    say("I did not get you, kindly repeat")
+    else:
+        say("I did not get you, kindly repeat")
+        flr=int(input("Pls enter your floor: "))
+        if(flr not in range(0,4)):
+            print("exit")
+        else:
+            main(flr)
+
+flr=int(input("Pls enter your floor: "))
+#flr=voice()  #takevoice input
+main(flr)
