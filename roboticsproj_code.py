@@ -87,3 +87,5 @@ elif int(flr)==3:
     #click servo
     xmotor('-')
     ymotor('-')
+
+else:
