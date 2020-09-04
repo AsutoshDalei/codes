@@ -3,6 +3,7 @@ import RPi.GPIO as GPIO
 from time import sleep
 GPIO.setmode(GPIO.BCM)
 
+flr=int(input())
 def voice():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -45,15 +46,15 @@ def xmotor(d):
     if d=='+':
         GPIO.output(in11,GPIO.HIGH)
         GPIO.output(in12,GPIO.LOW)
-        print("x axis forward")
+        print("y axis forward")
     elif d=='-':
         GPIO.output(in11,GPIO.LOW)
         GPIO.output(in12,GPIO.HIGH)
-        print("x axis backward")
+        print("y axis backward")
     else:
         GPIO.output(in11,GPIO.LOW)
         GPIO.output(in12,GPIO.LOW)
-        print("x axis stop")
+        print("y axis stop")
 
 def ymotor(d):
     if d=='+':
@@ -68,21 +69,21 @@ def ymotor(d):
         GPIO.output(in21,GPIO.LOW)
         GPIO.output(in22,GPIO.LOW)
         print("y axis stop")
+#Assuming we always start from ground (0)
 
+if int(flr)==1:
+    xmotor('+')
+    #click servo
+    xmotor('-')
 
-
-
-
-
-
-
-if int(flr)==0:
-    # click ground
-
-elif int(flr)==1:
-
-    #click 1
 elif int(flr)==2:
-    #click 2
+    ymotor('+')
+    #click servo
+    ymotor('-')
+
 elif int(flr)==3:
-    #click 3
+    xmotor('+')
+    ymotor('+')
+    #click servo
+    xmotor('-')
+    ymotor('-')
