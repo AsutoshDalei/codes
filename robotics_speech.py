@@ -40,6 +40,42 @@ GPIO.output(in21,GPIO.LOW)
 GPIO.output(in22,GPIO.LOW)
 #Assuming that we have 3 floors: 0 1 2 3
 #https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/#:~:text=The%20design%20of%20the%20Raspberry,common%20(connect%20them%20together).
+
+def xmotor(d):
+    if d=='+':
+        GPIO.output(in11,GPIO.HIGH)
+        GPIO.output(in12,GPIO.LOW)
+        print("x axis forward")
+    elif d=='-':
+        GPIO.output(in11,GPIO.LOW)
+        GPIO.output(in12,GPIO.HIGH)
+        print("x axis backward")
+    else:
+        GPIO.output(in11,GPIO.LOW)
+        GPIO.output(in12,GPIO.LOW)
+        print("x axis stop")
+
+def ymotor(d):
+    if d=='+':
+        GPIO.output(in21,GPIO.HIGH)
+        GPIO.output(in22,GPIO.LOW)
+        print("y axis forward")
+    elif d=='-':
+        GPIO.output(in21,GPIO.LOW)
+        GPIO.output(in22,GPIO.HIGH)
+        print("y axis backward")
+    else:
+        GPIO.output(in21,GPIO.LOW)
+        GPIO.output(in22,GPIO.LOW)
+        print("y axis stop")
+
+
+
+
+
+
+
+
 if int(flr)==0:
     # click ground
 
