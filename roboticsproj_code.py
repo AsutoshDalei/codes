@@ -84,26 +84,76 @@ def ymotor(d):
 
 def main(flr):
     if int(flr)==1:
+        say("Okay")
         xmotor('+')
         #click servo
+        print('click')
         xmotor('-')
 
     elif int(flr)==2:
+        say("Okay")
         ymotor('+')
         #click servo
+        print('click')
         ymotor('-')
 
     elif int(flr)==3:
+        say("Okay")
         xmotor('+')
         ymotor('+')
         #click servo
-        xmotor('-')
+        print('click')
         ymotor('-')
+        xmotor('-')
+
+    elif int(flr)==4:
+        say("Okay")
+        xmotor('+')
+        xmotor('+')
+        #click servo
+        print('click')
+        xmotor('-')
+        xmotor('-')
+
+    elif int(flr)==5:
+        say("Okay")
+        xmotor('+')
+        ymotor('+')
+        ymotor('+')
+        #click servo
+        print('click')
+        ymotor('-')
+        ymotor('-')
+        xmotor('-')
+
+    elif int(flr)==6:
+        say("Okay")
+        xmotor('+')
+        xmotor('+')
+        xmotor('+')
+        #click servo
+        print('click')
+        xmotor('-')
+        xmotor('-')
+        xmotor('-')
+
+    elif int(flr)==7:
+        say("Okay")
+        xmotor('+')
+        ymotor('+')
+        ymotor('+')
+        ymotor('+')
+        #click servo
+        print('click')
+        ymotor('-')
+        ymotor('-')
+        ymotor('-')
+        xmotor('-')
 
     else:
         say("I did not get you, kindly repeat")
-        flr=int(input("Pls enter your floor: "))
-        if(flr not in range(0,4)):
+        flr=int(input("Pls enter your floor, again: "))
+        if(flr not in range(0,8)):
             print("exit")
         else:
             main(flr)
@@ -111,3 +161,21 @@ def main(flr):
 flr=int(input("Pls enter your floor: "))
 #flr=voice()  #takevoice input
 main(flr)
+'''                      O
+                        \ /
+                         |
+                        / \
+|-------------------------|
+|                         |
+|                         |
+|    6                7   |
+|                         |
+|                         |
+|    4               5    |
+|                         |
+|                         |
+|    2               3    |
+|                         |
+|                         |
+|    0               1    |
+-------------------------- '''
