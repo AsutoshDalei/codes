@@ -3,6 +3,8 @@ import speech_recognition as sr
 from time import sleep
 #GPIO.setmode(GPIO.BCM)
 import pyttsx3
+import requests
+import json
 engine = pyttsx3.init()
 
 
@@ -158,7 +160,10 @@ def main(flr):
         else:
             main(flr)
 
-flr=int(input("Pls enter your floor: "))
+flr=int(input("Pls enter your floor: ")) #Enter the speech recognize model here
+#response = requests.get("https://speech.googleapis.com/v1p1beta1/speech:recognize")
+#print(response.json())
+
 #flr=voice()  #takevoice input
 main(flr)
 '''                      O
