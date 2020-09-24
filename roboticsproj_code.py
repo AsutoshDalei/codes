@@ -49,7 +49,7 @@ GPIO.output(in11,GPIO.LOW)
 GPIO.output(in12,GPIO.LOW)
 GPIO.output(in21,GPIO.LOW)
 GPIO.output(in22,GPIO.LOW)'''
-#Assuming that we have 3 floors: 0 1 2 3
+#Assuming that we have 3 floors: 0 1 2 3 4 5 6 7
 #https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/#:~:text=The%20design%20of%20the%20Raspberry,common%20(connect%20them%20together).
 
 def xmotor(d):
