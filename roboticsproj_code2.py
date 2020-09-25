@@ -1,5 +1,7 @@
 import speech_recognition as sr
 #import RPi.GPIO as GPIO
+import sys
+_,flr=sys.argv
 from time import sleep
 #GPIO.setmode(GPIO.BCM)
 import pyttsx3
@@ -29,7 +31,7 @@ def voice():
     except sr.UnknownValueError:
         print("Google Speech Recognition could not understand audio")
     except sr.RequestError as e:
-        print("Could not request results from Google Speech Recognition service; {0}".format(e))
+        print("Could not request results from Google Speech Recognition service: {0}".format(e))
 
     WIT_AI_KEY = "INSERT WIT.AI API KEY HERE"  # Wit.ai keys are 32-character uppercase alphanumeric strings
     try:
@@ -83,19 +85,25 @@ def ymotor(d):
         print("y axis stop")
 
 #Assuming we always start from ground (0)
-def main(flr):
-    a,b=flr/2,flr%2
+def control(flr1):
+    a,b=int(flr1/2),int(flr1%2)
     for x in range(2):
         for i in range(b):
-            ymotor(x)
-        for j in range(a):
             xmotor(x)
-    for i in range(b):
-        ymotor('+')
-    for j in range(a):
-        xmotor('+')
+        for j in range(a):
+            ymotor(x)
+        print('click')
 
+def main(flr):
+    #flr=int(input("Please enter your floor: "))
+    if flr in range(8):
+        print(f'going to floor {flr}')
+        say("going to floor")
+        control(flr)
+    else:
+        say('I did not get you, kindly repeat')
 
+main(int(flr))
 
 
 
