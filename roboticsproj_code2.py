@@ -22,14 +22,18 @@ def say(r):
 def listen():
     r = sr.Recognizer()
     with sr.Microphone() as source:
-        say("Talk")
+        print("Kindly speak now:")
+        say("Kindly speak now")
         audio_text = r.listen(source)
         sleep(3)
         print("Time over, thanks")
         try:
-            print("Text: "+r.recognize_google(audio_text))
+            say("Did you say: "+r.recognize_google(audio_text))
+            print(r.recognize_google(audio_text))
+            return(r.recognize_google(audio_text))
         except:
             say("Sorry, I did not get that")
+            return("sorry")
 
 def voice():
     r = sr.Recognizer()
@@ -119,7 +123,14 @@ def main(flr):
 
 #main(int(flr))
 
-listen()
+if 'lift' in listen():
+    say("kindly tell your required floor")
+    #main(int(listen))
+    a=listen()
+    main(int(a))
+else:
+    print('no')
+
 
 
 '''                      O
