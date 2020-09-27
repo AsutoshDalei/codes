@@ -1,7 +1,7 @@
 import speech_recognition as sr
 #import RPi.GPIO as GPIO
 import sys
-_,flr=sys.argv
+#_,flr=sys.argv
 from time import sleep
 #GPIO.setmode(GPIO.BCM)
 import pyttsx3
@@ -9,6 +9,7 @@ import requests
 import json
 engine = pyttsx3.init()
 
+r = sr.Recognizer()
 
 def say(r):
     rate = engine.getProperty('rate')
@@ -17,6 +18,18 @@ def say(r):
     engine.setProperty('voice', voices[1].id)
     engine.say(r)
     engine.runAndWait()
+
+def listen():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        say("Talk")
+        audio_text = r.listen(source)
+        sleep(3)
+        print("Time over, thanks")
+        try:
+            print("Text: "+r.recognize_google(audio_text))
+        except:
+            say("Sorry, I did not get that")
 
 def voice():
     r = sr.Recognizer()
@@ -92,20 +105,21 @@ def control(flr1):
             xmotor(x)
         for j in range(a):
             ymotor(x)
-        print('click')
+        if(x==0):
+            print('click')
 
 def main(flr):
     #flr=int(input("Please enter your floor: "))
     if flr in range(8):
         print(f'going to floor {flr}')
-        say("going to floor")
+        say(f"going to floor {flr}")
         control(flr)
     else:
-        say('I did not get you, kindly repeat')
+        say('I did not get you')
 
-main(int(flr))
+#main(int(flr))
 
-
+listen()
 
 
 '''                      O
@@ -125,4 +139,4 @@ main(int(flr))
 |                         |
 |                         |
 |    0               1    |
--------------------------- '''
+--------------------------- '''
