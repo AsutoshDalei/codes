@@ -101,13 +101,13 @@ def main(flr):
 
 #main(int(flr))
 
-if 'lift' in listen():
+if 'Joshua' in listen():
     say("kindly tell your required floor")
     #main(int(listen))
     a=listen()
     main(int(a))
 else:
-    print('no')
+    print('I did not get you')
 
 
 
