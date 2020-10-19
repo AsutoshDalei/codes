@@ -36,20 +36,20 @@ def listen():
             return("sorry")
 
 
-'''m11=18
-m12=23
-m21=24
-m22=25
+'''in11=18
+in12=23
+in21=24
+in22=25
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(m11, GPIO.OUT)
-GPIO.setup(m12, GPIO.OUT)
-GPIO.setup(m21, GPIO.OUT)
-GPIO.setup(m22, GPIO.OUT)
-GPIO.output(m11 , 0)
-GPIO.output(m12 , 0)
-GPIO.output(m21, 0)
-GPIO.output(m22, 0)'''
+GPIO.setup(in11, GPIO.OUT)
+GPIO.setup(in12, GPIO.OUT)
+GPIO.setup(in21, GPIO.OUT)
+GPIO.setup(in22, GPIO.OUT)
+GPIO.output(in11 , 0)
+GPIO.output(in12 , 0)
+GPIO.output(in21, 0)
+GPIO.output(in22, 0)'''
 #Assuming that we have 3 floors: 0 1 2 3 4 5 6 7
 #https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/#:~:text=The%20design%20of%20the%20Raspberry,common%20(connect%20them%20together).
 #https://circuitdigest.com/microcontroller-projects/raspberry-pi-remote-controlled-car
