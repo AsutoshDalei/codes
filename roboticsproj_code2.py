@@ -15,7 +15,7 @@ def say(r):
     rate = engine.getProperty('rate')
     engine.setProperty('rate', 125)
     voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[1].id)
+    engine.setProperty('voice', voices[0].id)
     engine.say(r)
     engine.runAndWait()
 
@@ -36,30 +36,40 @@ def listen():
             return("sorry")
 
 
-'''GPIO.setup(in11,GPIO.OUT)
-GPIO.setup(in12,GPIO.OUT)
-GPIO.setup(en1,GPIO.OUT)
-
-GPIO.setup(in21,GPIO.OUT)
-GPIO.setup(in22,GPIO.OUT)
-GPIO.setup(en2,GPIO.OUT)
-
-GPIO.output(in11,GPIO.LOW)
-GPIO.output(in12,GPIO.LOW)
-GPIO.output(in21,GPIO.LOW)
-GPIO.output(in22,GPIO.LOW)'''
+'''m11=18
+m12=23
+m21=24
+m22=25
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(m11, GPIO.OUT)
+GPIO.setup(m12, GPIO.OUT)
+GPIO.setup(m21, GPIO.OUT)
+GPIO.setup(m22, GPIO.OUT)
+GPIO.output(m11 , 0)
+GPIO.output(m12 , 0)
+GPIO.output(m21, 0)
+GPIO.output(m22, 0)'''
 #Assuming that we have 3 floors: 0 1 2 3 4 5 6 7
 #https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/#:~:text=The%20design%20of%20the%20Raspberry,common%20(connect%20them%20together).
+#https://circuitdigest.com/microcontroller-projects/raspberry-pi-remote-controlled-car
 
 def xmotor(d):
     if d==0:                            #0 is + or forward, 1 is - or backward
+        print("x axis forward")
         #GPIO.output(in11,GPIO.HIGH)
         #GPIO.output(in12,GPIO.LOW)
-        print("x axis forward")
+        sleep(3)
+        #GPIO.output(in11,GPIO. LOW)
+        #GPIO.output(in12,GPIO.LOW)
+
     elif d==1:
         #GPIO.output(in11,GPIO.LOW)
         #GPIO.output(in12,GPIO.HIGH)
         print("x axis backward")
+        sleep(3)
+        #GPIO.output(in11,GPIO. LOW)
+        #GPIO.output(in12,GPIO.LOW)
     else:
         #GPIO.output(in11,GPIO.LOW)
         #GPIO.output(in12,GPIO.LOW)
@@ -70,10 +80,16 @@ def ymotor(d):
         #GPIO.output(in21,GPIO.HIGH)
         #GPIO.output(in22,GPIO.LOW)
         print("y axis forward")
+        sleep(3)
+        #GPIO.output(in21,GPIO.LOW)
+        #GPIO.output(in22,GPIO.LOW)
     elif d==1:
         #GPIO.output(in21,GPIO.LOW)
         #GPIO.output(in22,GPIO.HIGH)
         print("y axis backward")
+        sleep(3)
+        #GPIO.output(in21,GPIO.LOW)
+        #GPIO.output(in22,GPIO.LOW)
     else:
         #GPIO.output(in21,GPIO.LOW)
         #GPIO.output(in22,GPIO.LOW)
