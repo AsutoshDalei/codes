@@ -86,12 +86,12 @@ asu.alarm1=['6 30','6 40','6 50','7','7 10']
 cup.alarm1=['5 30','5 40','5 50','6','6 10']
 
 #a=norm.listen()
-a='Alexa is me'
+a='I am Alexa'
 print(a)
 if 'Alexa' in a:
-    norm.say('who are you')
+    norm.say('Could I know your name?')
     y=norm.listen()
-    if 'Robo' in 'Robotics':
+    if 'Robo' in y:
         asu.say('Hello asutosh, how are you ? What can I do for you today?')
         asu.view()
         x=asu.listen()
