@@ -6,7 +6,7 @@ class User():
     from time import sleep
     import pyttsx3
     import numpy as np
-    import cv2
+    import cv2 as cv2
     engine = pyttsx3.init()
     r = sr.Recognizer()
     face_cascade = cv2.CascadeClassifier(r'C:\Users\asuto\Desktop\cache\face.xml')
@@ -27,13 +27,13 @@ class User():
         r = self.sr.Recognizer()
         with self.sr.Microphone() as source:
             print("Kindly speak now:")
-            say(f"Hello {self.username}, kindly speak now")
+            self.say(f"Hello {self.username}, kindly speak now")
             audio_text = r.listen(source)
             self.sleep(3)
             print("Time over, thanks")
             try:
-                say("Did you say: "+r.recognize_google(audio_text))
-                print(r.recognize_google(audio_text))
+                self.say("Did you say: "+r.recognize_google(audio_text))
+                #print(r.recognize_google(audio_text))
                 return(r.recognize_google(audio_text))
             except:
                 say("Sorry, I did not get that")
@@ -41,9 +41,9 @@ class User():
     
     def view(self):
         cap = self.cv2.VideoCapture(0)
-        while 1:
+        while True:
             ret, img = cap.read()
-            gray = self.cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            gray = self.cv2.cvtColor(img, self.cv2.COLOR_BGR2GRAY)
             faces = self.face_cascade.detectMultiScale(gray, 1.3, 5)
             for (x,y,w,h) in faces:
                 self.cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
@@ -53,7 +53,7 @@ class User():
                 for (ex,ey,ew,eh) in eyes:
                     self.cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
             
-            img = self.cv2.putText(img, self.username, (10,10), self.cv2.FONT_HERSHEY_SIMPLEX ,1,(255, 0, 0), 1, self.cv2.LINE_AA) #blue font
+            img = self.cv2.putText(img, self.username, (x-20,y-20), self.cv2.FONT_HERSHEY_SIMPLEX ,1,(255, 0, 0), 3, self.cv2.LINE_AA) #blue font
             self.cv2.imshow('img',img)
             k = self.cv2.waitKey(30) & 0xff
             if k == 27:
@@ -64,8 +64,8 @@ class User():
 norm=User('Stranger')
 asu=User('Asutosh')
 shivi=User('Shivika')
-        
 
+print(norm.listen())
 
 
 
