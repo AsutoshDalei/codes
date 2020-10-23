@@ -30,13 +30,13 @@ class User():
         r = self.sr.Recognizer()
         with self.sr.Microphone() as source:
             print("Kindly speak now:")
-            self.say(f"Hello {self.username}, kindly speak now")
+            #self.say(f"Hello {self.username}, kindly speak now")
             audio_text = r.listen(source)
             self.sleep(3)
             print("Time over, thanks")
             try:
                 self.say("Did you say: "+r.recognize_google(audio_text))
-                #print(r.recognize_google(audio_text))
+                print(r.recognize_google(audio_text))
                 return(r.recognize_google(audio_text))
             except:
                 say("Sorry, I did not get that")
@@ -64,23 +64,45 @@ class User():
         cap.release()
         self.cv2.destroyAllWindows()
 
-    def tasks(self,x):
+    def addtasks(self,x):
         self.task1.append(x)
-    def alarms(self,y):
+    def addalarms(self,y):
         self.alarm1.append(x)
-    def loads(self,y):
+    def addloads(self,y):
         self.load1.append(x)
 
 norm=User('Stranger')
-asu=User('Asutosh')
-shivi=User('Shivika')
+asu=User('asutosh')
+cup=User('robot2')
 
-print(norm.listen())
-if 'Alexa' in norm.listen():
-    norm.say('who are you'):
-    if 'Asutosh' in norm.listen():
+asu.task1=['light','Fan','Ac','Tv']
+cup.task1=['Light','Fan','Ac','Tv']
+
+asu.alarm1=['6 30','6 40','6 50','7','7 10']
+cup.alarm1=['5 30','5 40','5 50','6','6 10']
+
+#a=norm.listen()
+a='Alexa is me'
+print(a)
+if 'Alexa' in a:
+    norm.say('who are you')
+    y=norm.listen()
+    if 'Robo' in y:
         asu.say('Hello asutosh, how are you ? What can I do for you today?')
-        asu.listen()
+        x=asu.listen()
+        if x in asu.task1:
+            asu.say(f'Ok, doing task {x}')
+        else:
+            asu.say('I did not get you')
+    elif 'test' in y:
+        cup.say('Hello test, how are you ? What can I do for you today?')
+        x=cup.listen()
+        if x in asu.task1:
+            cup.say(f'Ok, doing task turn on {x}')
+        else:
+            cup.say('I did not get you')
+    else:
+        norm.say('I do not know you')
         
 
 
