@@ -61,11 +61,20 @@ class User():
         cap.release()
         self.cv2.destroyAllWindows()
 
+    def tasks(self):
+
+
 norm=User('Stranger')
 asu=User('Asutosh')
 shivi=User('Shivika')
 
 print(norm.listen())
+if 'Alexa' in norm.listen():
+    norm.say('who are you'):
+    if 'Asutosh' in norm.listen():
+        asu.say('Hello asutosh, how are you ? What can I do for you today?')
+        asu.listen()
+        
 
 
 
