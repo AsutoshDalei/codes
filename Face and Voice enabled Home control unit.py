@@ -14,6 +14,9 @@ class User():
 
     def __init__(self,name):
         self.username=name
+        self.task1=[]
+        self.alarm1=[]
+        self.load1=[]
     
     def say(self,r):
         rate = self.engine.getProperty('rate')
@@ -61,8 +64,12 @@ class User():
         cap.release()
         self.cv2.destroyAllWindows()
 
-    def tasks(self):
-
+    def tasks(self,x):
+        self.task1.append(x)
+    def alarms(self,y):
+        self.alarm1.append(x)
+    def loads(self,y):
+        self.load1.append(x)
 
 norm=User('Stranger')
 asu=User('Asutosh')
