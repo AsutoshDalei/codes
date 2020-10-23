@@ -25,7 +25,7 @@ def listen():
         print("Kindly speak now:")
         say("Kindly speak now")
         audio_text = r.listen(source)
-        sleep(3)
+        #sleep(3)
         print("Time over, thanks")
         try:
             say("Did you say: "+r.recognize_google(audio_text))
@@ -59,7 +59,7 @@ def xmotor(d):
         print("x axis forward")
         #GPIO.output(in11,GPIO.HIGH)
         #GPIO.output(in12,GPIO.LOW)
-        sleep(3)
+        sleep(1)
         #GPIO.output(in11,GPIO. LOW)
         #GPIO.output(in12,GPIO.LOW)
 
@@ -67,7 +67,7 @@ def xmotor(d):
         #GPIO.output(in11,GPIO.LOW)
         #GPIO.output(in12,GPIO.HIGH)
         print("x axis backward")
-        sleep(3)
+        sleep(1)
         #GPIO.output(in11,GPIO. LOW)
         #GPIO.output(in12,GPIO.LOW)
     else:
@@ -117,7 +117,7 @@ def main(flr):
 
 #main(int(flr))
 
-if 'Joshua' in listen():
+if 'robotics' in listen():
     say("kindly tell your required floor")
     #main(int(listen))
     a=listen()
