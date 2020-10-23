@@ -13,7 +13,7 @@ class User():
     eye_cascade = cv2.CascadeClassifier(r'C:\Users\asuto\Desktop\cache\eye.xml')
 
     def __init__(self,name):
-        username=name
+        self.username=name
     
     def say(self,r):
         rate = self.engine.getProperty('rate')
@@ -27,7 +27,7 @@ class User():
         r = self.sr.Recognizer()
         with self.sr.Microphone() as source:
             print("Kindly speak now:")
-            say(f"Hello {name}, kindly speak now")
+            say(f"Hello {self.username}, kindly speak now")
             audio_text = r.listen(source)
             self.sleep(3)
             print("Time over, thanks")
@@ -52,13 +52,18 @@ class User():
                 eyes = self.eye_cascade.detectMultiScale(roi_gray)
                 for (ex,ey,ew,eh) in eyes:
                     self.cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
-
+            
+            img = self.cv2.putText(img, self.username, (10,10), self.cv2.FONT_HERSHEY_SIMPLEX ,1,(255, 0, 0), 1, self.cv2.LINE_AA) #blue font
             self.cv2.imshow('img',img)
             k = self.cv2.waitKey(30) & 0xff
             if k == 27:
                 break
         cap.release()
         self.cv2.destroyAllWindows()
+
+norm=User('Stranger')
+asu=User('Asutosh')
+shivi=User('Shivika')
         
 
 
