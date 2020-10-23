@@ -108,7 +108,6 @@ if 'Alexa' in a:
             cup.say('I did not get you')
     else:
         norm.say('I do not know you')
-        
 
 
 
