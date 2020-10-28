@@ -1,3 +1,6 @@
+#Project has been successfully finished and demonstrated. 28th of October, 2020
+#SHIVIKA BISARIA CRISTIANA JOHN SHIVAM DUBEY ASUTOSH DALEI
+
 import speech_recognition as sr
 #import RPi.GPIO as GPIO
 import sys
@@ -25,7 +28,7 @@ def listen():
         print("Kindly speak now:")
         say("Kindly speak now")
         audio_text = r.listen(source)
-        #sleep(3)
+        sleep(3)
         print("Time over, thanks")
         try:
             say("Did you say: "+r.recognize_google(audio_text))
@@ -56,7 +59,7 @@ GPIO.output(in22, 0)'''
 
 def xmotor(d):
     if d==0:                            #0 is + or forward, 1 is - or backward
-        print("x axis forward")
+        print("x axis up")
         #GPIO.output(in11,GPIO.HIGH)
         #GPIO.output(in12,GPIO.LOW)
         sleep(1)
@@ -66,7 +69,7 @@ def xmotor(d):
     elif d==1:
         #GPIO.output(in11,GPIO.LOW)
         #GPIO.output(in12,GPIO.HIGH)
-        print("x axis backward")
+        print("x axis down")
         sleep(1)
         #GPIO.output(in11,GPIO. LOW)
         #GPIO.output(in12,GPIO.LOW)
@@ -79,15 +82,15 @@ def ymotor(d):
     if d==0:                               #0 is + or forward, 1 is - or backward
         #GPIO.output(in21,GPIO.HIGH)
         #GPIO.output(in22,GPIO.LOW)
-        print("y axis forward")
-        sleep(3)
+        print("y axis up")
+        sleep(1)
         #GPIO.output(in21,GPIO.LOW)
         #GPIO.output(in22,GPIO.LOW)
     elif d==1:
         #GPIO.output(in21,GPIO.LOW)
         #GPIO.output(in22,GPIO.HIGH)
-        print("y axis backward")
-        sleep(3)
+        print("y axis down")
+        sleep(1)
         #GPIO.output(in21,GPIO.LOW)
         #GPIO.output(in22,GPIO.LOW)
     else:
@@ -112,12 +115,13 @@ def main(flr):
         print(f'going to floor {flr}')
         say(f"going to floor {flr}")
         control(flr)
+        say(f"pressed floor number {flr}")
     else:
         say('I did not get you')
 
 #main(int(flr))
 
-if 'robotics' in listen():
+if 'Robo' in listen():
     say("kindly tell your required floor")
     #main(int(listen))
     a=listen()
